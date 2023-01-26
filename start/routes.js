@@ -19,8 +19,9 @@ const Route = use('Route')
 Route.group(() => {
   Route.post('users/register', 'UserController.store');
   Route.post('users/login', 'UserController.login');
-
-
+  Route.get('projects/', 'ProjectController.index').middleware('auth'); //proteger la route
+  Route.post('projects/', 'ProjectController.create').middleware('auth'); 
+  Route.delete('projects/:id', 'ProjectController.destroy').middleware('auth'); 
 }).prefix('api/v1/');   
 
 
